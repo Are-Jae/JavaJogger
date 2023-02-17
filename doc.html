@@ -5,60 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./doc.css ">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+   
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>JS API QUIZ</title>
 </head>
 
-<header>
-    <div id="h2">Highscores!</div>
-
+<header class="jumbotron">
+    <div class="jumbotron"> <!--make into card, click to reveal HS-->
+        <h1>Highscores!</h1>
+    </div>
+    
     <button id="start-button" class="jumbotron">Begin Quiz!</button>
 </header>
+
+
 <body>
     
     <main>
 
-        <section id="questions">
-            <div class="js quiz"></div>
-            <div id="question" class="large-font">-Questions(6)</div>
-            <div id="question" class="large-font">-Questions(6)</div>
-            <div id="question" class="large-font">-Questions(6)</div>
-            <div id="question" class="large-font">-Questions(6)</div>
-            <div id="question" class="large-font">-Questions(6)</div>
-            <div id="question" class="large-font">-Questions(6)</div>
+        <section class="questions">
+            <div id="question1" class="large-font">-Which of these is not a logical operator?</div> <!--how should the questions display, review example-->
+            <div id="question2" class="large-font">-What is not an event type?</div>
+            <div id="question3" class="large-font">How long did it take to develop Javascript?</div>
+            <div id="question4" class="large-font">What was Javascript originally named?</div>
+            <div id="question5" class="large-font">How do you create a string in Javascript?</div>
+            <div id="question6" class="large-font">What does Javascript do to a document/webpage?</div>
         </section>
+
+        <section>
+    <div class="answer"> <!--how should the answers display, review example-->
+     
+    </div>
+          <label for="answer1" id="question one answers"></label>
+          <select name="answer1" id="question one answers" multiple>
+          <option value="answers go here">&&</option>
+          <option value="answers go here">||</option>
+          <option value="answers go here">""</option>
+          
+        </select>
+
+          <label for="answer2" id="question 2 answers"></label>
+          <select name="answer1" id="question one answers" multiple>
+          <option value="answers go here">Click</option>
+          <option value="answers go here">Mousemove</option>
+          <option value="answers go here">Cocktail Party</option>
+     
+        </select>
+
+
+          <label for="answer3" id="question 3 answers"></label>
+          <select name="answer1" id="question one answers" multiple>
+          <option value="answers go here">10 Days</option>
+          <option value="answers go here">3 Months</option>
+          <option value="answers go here">5 Years</option>
+   
+        </select>
+
+
+          <label for="answer4" id="question 4 answers"></label> 
+          <select name="answer1" id="question one answers" multiple>
+          <option value="answers go here">Latte</option>
+          <option value="answers go here">Mocha</option>
+          <option value="answers go here">Espresso</option>
+         
+          </select>
+
+
+          <label for="answer5" id="question 5 answers"></label>
+          <select name="answer1" id="question one answers" multiple>
+          <option value="answers go here">" "</option>
+          <option value="answers go here">' '</option>
+          <option value="answers go here">.string</option>
+          
+        </select>
+
+
+          <label for="answer6" id="question 6 answers"></label>
+          <select name="answer1" id="question one answers" multiple>
+          <option value="answers go here">Stlyes the page</option>
+          <option value="answers go here">Adds interactive elements</option>
+          <option value="answers go here">Gives user free coffee</option>
+     
+        </select>
+
+        </section>
+
+
     </main>
 
-    <section id="results">
-<div class>-User's results(6)-</div>
-<div id="answer" class="large-font">-Answers(6)</div>
-<div id="answer" class="large-font">-Answers(6)</div>
-<div id="answer" class="large-font">-Answers(6)</div>
-<div id="answer" class="large-font">-Answers(6)</div>
-<div id="answer" class="large-font">-Answers(6)</div>
-<div id="answer" class="large-font">-Answers(6)</div>
 
-    </section>
+    
   
     <section>
 
-    <container id="scores">
+    <container class="results"> <!--have results dislpay in card?-->
 
-        <div id="h2">Wins</div>
-        <div id="h2">Losses</div>
+        <h2>Wins</h2>
+        <h2>Losses</h2>
         <button class="resets">Reset Score</button>
     </container>
 
-    <container id="timer">
-        <div id="timer-text">
-            <div class="large-font timer-count">10</div>
-            <h3>Time Left</h3>
+    <div class="timer">
+        <div class="timer-text">
             
+            <h3>Time Left</h3>
+
+            <br>
+            <br>
+            <div class="large-font timer-count">10</div> <!--need box to display timer in? api should let me have a timer on the question/answer module-->
 
     
 
 
         </div>
-    </container>
+    </div>
    
 </section>
 
@@ -68,8 +129,12 @@
 
 </html>
 
-ln 22 is where multiple choice questions will start, 6 questions
+<!--ln 22 is where multiple choice questions will start, 6 questions
 
 subsequent lines will be the user's results, 6 answers
 
-log user's scores, reveal highscore 
+log user's scores, reveal highscore
+
+//should I switch div class id w/ section id? instead of section id, write div class id and leave section unamed? 
+
+difference between id/class when naming sections/containers/divs 
