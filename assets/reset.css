@@ -2,39 +2,78 @@
     background-color: #FAF9F6;
 }
 
-.jumbotron{
 
-    color: blue;
-   align-items:left;
-   position: relative;
+.info{ /*will be used to center info elements but not style them*/
+
+
 
 }
 
-.start-button{
+ .startBtn{ /*will add bg color to button, should center with info*/
 
-    align-items: center;
-    position: relative;
+   
 }
 
-h1, .answers, .questions{
+
+
+.timer{ /*will add display properties with js?*/
+
+
+}
+
+
+.p{ /*mostly font change, no color added, will align w/ info */
+
+
+
+
+}
+
+h1{ /*will apply to all h1*/
 
     color:black;
 }
 
 
-.results{
+.quiz{ /*will style everything within quiz, use items to style children*/
     
-    color:green;
+   
 
 
 }
 
-.resets{
+
+
+.question{ /*add boxes, bg- color, center text*/
 
 
 }
 
-.timer{
+
+.choices{/*add boxes, bg- color, center text*/
+
+
+}
+
+.initials{ /*align box to left */
+
+
+}
+
+
+.submit{ /*will share same elements as startBtn, consolodate style rules*/
+
+
+
+}
+
+
+.finalScore{ /*will display after last question is answered*/
+
+
+}
+
+.storedScore{ /*will display all previous highscores*/
 
 
 }
