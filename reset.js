@@ -7,9 +7,8 @@ const choices = document.querySelector(".choices");
 const scoreBox = document.querySelector(".score");
 const submitBtn = document.querySelector(".submit");
 const end = document.querySelector(".end");
-end.style.display = "none"; //do I need to move this?
 const finalScore= document.querySelector(".finalScore");
-const storedScore= document.querySelector("storedScore"); 
+const storedScore= document.querySelector(".storedScore"); 
 
 var index = 0; //this doesnt need to change
 let score = 0; //score needs to = 0? 
@@ -20,6 +19,7 @@ saveBtn.addEventListener("click", function () {
     info.style.display = "none"
     start(index)
 })
+
 
 var set = [ //add real questions once functionality is set
     {
@@ -35,6 +35,8 @@ var set = [ //add real questions once functionality is set
 ]
 
 function start(index) {
+    end.style.display = "none"; //do I need to move this?
+
     question.innerHTML = "";
     choices.innerHTML = "";
     // loop through our set array
@@ -68,7 +70,10 @@ function start(index) {
                     end.style.display = "block"
                     quiz.style.display = "none"
                     scoreBox.innerHTML = "You got a score of: " + score + "!"
-                
+                    //get your initials from the textarea
+                    //initials will actually equal the textArea's value
+                    var initials = "A.G"
+                    saveStorage({initials,score})
                 }
             }
         })
@@ -78,4 +83,36 @@ function start(index) {
 
 }
 
-//need to create a var for answers to be stored & for answers to be displayed 
+
+//use this to store info localStorage.setItem
+function saveStorage(newValue){
+    console.log("Saving to Storage", newValue)
+    var savedScores = JSON.parse(localStorage.getItem("poop"))
+    console.log("Current saved scores", savedScores)
+    savedScores.push(newValue)
+    console.log("updated savedScores", savedScores)
+    localStorage.setItem("poop", JSON.stringify(savedScores))
+}
+
+// do not place user info in local scope
+function loadStorage(){
+    var savedScores = JSON.parse(localStorage.getItem("poop"))
+    console.log(savedScores)
+    if(!savedScores){
+        localStorage.setItem("poop", JSON.stringify([]))
+        return
+    }
+    //rendering the storage
+    //loop thorugh the array
+    savedScores.forEach(function(element){
+        console.log(element)
+            var newElement = document.createElement("li")
+            newElement.textContent = element.initials + " : " + element.score
+            console.log(newElement)
+            storedScore.append(newElement)
+    })
+
+}
+
+loadStorage()
+
