@@ -58,3 +58,20 @@ My last task is to successfully have this app open on a local server successfull
 SOURCES 
 
 
+## TO DO:
+
+-create var for answers +
+
+-create var for stored answers +
+
+-create boxes (about 10, use divs)
+
+-add questions into reset.js
+
+-add choices into reset.js
+
+-raspberry sorbet hex code, apply to css
+
+-link css to html
+
+-test functionality 
