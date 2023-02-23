@@ -23,23 +23,43 @@ saveBtn.addEventListener("click", function () {
 
 var set = [ //add real questions once functionality is set
     {
-        question: "What color is the sky?",
-        choices: ["Blue", "Purple", "Orange", "Green"],
-        correct: "Blue"
+        question: "Which of these is not a logical operator?",
+        choices: ["&&", "||", ":"],
+        correct: ":",
     },
     {
-        question: "What color is grass?",
-        choices: ["Orange", "Purple", "Green", "Blue"],
-        correct: "Green"
+        question: "What is not an event type?",
+        choices: ["Click", "Mousemove", "Cocktail Party",],
+        correct: "Cocktail Party",
+    },
+    {
+        question: "How long did it take to develop Javascript?",
+        choices: ["10 Days", "3 Months", "5 Years"],
+        correct: "10 Days",
+    },
+    {
+        question:"What was Javascript originally named?",
+        choices:["Latte", "Mocha", "Espresso"],
+        correct:"Mocha",
+    },
+    {
+        question:"Which is not a Javascript data type",
+        choices:["Object", "Boolean", "coffeeReader" ],
+        correct: "coffeeReader",
+    },
+    {
+        question:"What does Javascript do to a document/webpage?",
+        choices:["Stlyes the page", "Adds interactive elements", "Gives user free coffee"],
+        correct: "Adds interactive elements",
     }
 ]
 
 function start(index) {
-    end.style.display = "none"; //do I need to move this?
+    
 
     question.innerHTML = "";
     choices.innerHTML = "";
-    // loop through our set array
+    // loop through the set array
     var currentQuestion = set[index].question
     question.innerHTML = currentQuestion
     var currentAnswer = set[index].choices
@@ -63,7 +83,7 @@ function start(index) {
                 }
                 index++
                 if(index < set.length) {
-                    // index = 0
+                     //index = [0]
                     start(index)
                 } else {
                     // call and end quiz button
@@ -72,7 +92,7 @@ function start(index) {
                     scoreBox.innerHTML = "You got a score of: " + score + "!"
                     //get your initials from the textarea
                     //initials will actually equal the textArea's value
-                    var initials = "A.G"
+                    var initials = " "
                     saveStorage({initials,score})
                 }
             }
@@ -83,23 +103,23 @@ function start(index) {
 
 }
 
-
+//I may ignore this code & stick with my original structure 
 //use this to store info localStorage.setItem
 function saveStorage(newValue){
     console.log("Saving to Storage", newValue)
-    var savedScores = JSON.parse(localStorage.getItem("poop"))
+    var savedScores = JSON.parse(localStorage.getItem(" "))
     console.log("Current saved scores", savedScores)
     savedScores.push(newValue)
     console.log("updated savedScores", savedScores)
-    localStorage.setItem("poop", JSON.stringify(savedScores))
+    localStorage.setItem(" ", JSON.stringify(savedScores))
 }
 
-// do not place user info in local scope
+// do not place user info in local scope, place in global scope 
 function loadStorage(){
-    var savedScores = JSON.parse(localStorage.getItem("poop"))
+    var savedScores = JSON.parse(localStorage.getItem(" "))
     console.log(savedScores)
     if(!savedScores){
-        localStorage.setItem("poop", JSON.stringify([]))
+        localStorage.setItem("", JSON.stringify([]))
         return
     }
     //rendering the storage
