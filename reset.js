@@ -12,8 +12,12 @@ const storedScore= document.querySelector(".storedScore");
 
 var index = 0; //this doesnt need to change
 let score = 0; //score needs to = 0? 
+let correctAnswer= "Correct";
+let wrongAnswer= "Wrong";
 
 
+// how can I add a "finish quiz" button? to the quiz code, it will end quiz function 
+// Need a function to just store initials after quiz is done; How can I write a function to store the highscores/initials to display AFTER the last question is answered? 
 
 saveBtn.addEventListener("click", function () {
     info.style.display = "none"
@@ -73,7 +77,8 @@ function start(index) {
             if (clicked.innerHTML) {
                 if (clicked.innerHTML == set[index].correct) {
                     score = score + 1
-                    console.log("Correct")
+                    console.log("Correct");
+                    document.append.correctAnswer;//something in here should change to show correct/wrong on the DOM 
                 } else {
                     score = score - 1
                     console.log("Wrong")
@@ -89,7 +94,7 @@ function start(index) {
                     // call and end quiz button
                     end.style.display = "block"
                     quiz.style.display = "none"
-                    scoreBox.innerHTML = "You got a score of: " + score + "!"
+                    scoreBox.innerHTML = "You got a score of: " + score + "!" //something in here will help with displaying correct/wrong 
                     //get your initials from the textarea
                     //initials will actually equal the textArea's value
                     var initials = " "
@@ -104,35 +109,38 @@ function start(index) {
 }
 
 //I may ignore this code & stick with my original structure 
-//use this to store info localStorage.setItem
-function saveStorage(newValue){
-    console.log("Saving to Storage", newValue)
-    var savedScores = JSON.parse(localStorage.getItem(" "))
-    console.log("Current saved scores", savedScores)
-    savedScores.push(newValue)
-    console.log("updated savedScores", savedScores)
-    localStorage.setItem(" ", JSON.stringify(savedScores))
-}
+// //use this to store info localStorage.setItem
 
-// do not place user info in local scope, place in global scope 
-function loadStorage(){
-    var savedScores = JSON.parse(localStorage.getItem(" "))
-    console.log(savedScores)
-    if(!savedScores){
-        localStorage.setItem("", JSON.stringify([]))
-        return
-    }
-    //rendering the storage
-    //loop thorugh the array
-    savedScores.forEach(function(element){
-        console.log(element)
-            var newElement = document.createElement("li")
-            newElement.textContent = element.initials + " : " + element.score
-            console.log(newElement)
-            storedScore.append(newElement)
-    })
 
-}
 
-loadStorage()
+// function saveStorage(newValue){
+//     console.log("Saving to Storage", newValue)
+//     var savedScores = JSON.parse(localStorage.getItem(" "))
+//     console.log("Current saved scores", savedScores)
+//     savedScores.push(newValue)
+//     console.log("updated savedScores", savedScores)
+//     localStorage.setItem(" ", JSON.stringify(savedScores))
+// }
+
+// // do not place user info in local scope, place in global scope 
+// function loadStorage(){
+//     var savedScores = JSON.parse(localStorage.getItem(" "))
+//     console.log(savedScores)
+//     if(!savedScores){
+//         localStorage.setItem("", JSON.stringify([]))
+//         return
+//     }
+//     //rendering the storage
+//     //loop thorugh the array
+//     savedScores.forEach(function(element){
+//         console.log(element)
+//             var newElement = document.createElement("li")
+//             newElement.textContent = element.initials + " : " + element.score
+//             console.log(newElement)
+//             storedScore.append(newElement)
+//     })
+
+// }
+
+//loadStorage();
 
