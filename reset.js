@@ -19,7 +19,7 @@ let wrongAnswer= "Wrong";
 
 
 // how can I add a "finish quiz" button? to the quiz code, it will end quiz function 
-// Need a function to just store initials after quiz is done; How can I write a function to store the highscores/initials to display AFTER the last question is answered? 
+// Need a function to just store initials after quiz is done; How can I write a function to store the highscores/initials to display AFTER the last question is answered? it needs to be stored within an object, then a function needs to be made in order for the items in that object to be called like for var set using localstorage.setitem, change the display settings 
 
 startBtn.addEventListener("click", function () {
     info.style.display = "none"
