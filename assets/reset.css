@@ -1,13 +1,43 @@
+:root{
+
+    --quizDisplay: flex;
+    --quizText:    center;
+    --quizPosition: relative;
+    }
+    
 .body{
     background-color: #FAF9F6;
 }
 
 
 .info{ /*will be used to center info elements but not style them*/
+        flex-flow: row wrap;
+        position: relative;
+        text-align: center;
+        margin-top: 20px;
 
 
 
 }
+
+
+.quizTitle{ /*will apply to all h1*/
+
+    /*display: var(--quizDisplay);
+    position: var(--quizPosition);
+    align-self: (var(--quizText));*/
+    
+        
+        font-size: large;
+        flex-flow: row wrap;
+        position: relative;
+        text-align: center;
+        background-color: none;
+        
+    
+    
+        
+    }
 
  .startBtn{ /*will add bg color to button, should center with info*/
 
@@ -29,10 +59,7 @@
 
 }
 
-h1{ /*will apply to all h1*/
 
-    color:black;
-}
 
 
 .quiz{ /*will style everything within quiz, use items to style children*/
