@@ -29,12 +29,12 @@ startBtn.addEventListener("click", function () {
 
 saveBtn.addEventListener("click", function(){
 //get text from initials 
-//call saveStorage({
-    //initials:;
-    //score:;
-//})
-//loadStorage()
+/*call*/ saveStorage({
+    initials: "",
+    score: "",
 })
+loadStorage()
+});
 
 var set = [ //add real questions once functionality is set
     {
@@ -155,5 +155,5 @@ function loadStorage(){
 
 }
 
-//loadStorage();
+loadStorage();
 
