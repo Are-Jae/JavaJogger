@@ -13,9 +13,11 @@ const storedScore= document.querySelector(".storedScore");
 let message= document.querySelector("#message")
 
 var index = 0; //this doesnt need to change
-let score = 0; //score needs to = 0? 
+let score = ''; 
 let correctAnswer= "Correct";
 let wrongAnswer= "Wrong";
+
+let savedScores= ""; //what do I need to save this as? 
 
 
 // how can I add a "finish quiz" button? to the quiz code, it will end quiz function 
@@ -94,8 +96,11 @@ function start(index) {
                     score = score - 1
                     console.log("Wrong");
                     message.textContent= wrongAnswer;
-                    if (score <= 0) {
-                        score = 0
+                    if (clicked.innerHTML == set[index].correct){
+                        score <= 0
+                        //score = 0
+                        console.log("Wrong");
+                        message.textContent=wrongAnswer;
                     }
                 }
                 index++
@@ -106,11 +111,11 @@ function start(index) {
                     // call and end quiz button
                     end.style.display = "block"
                     quiz.style.display = "none"
-                    scoreBox.innerHTML = "You got a score of: " + score + "!" 
+                    scoreBox.innerHTML = "You got a score of: " + score + "!" + "Enter your initials below"
                     //get your initials from the textarea
                     //initials will actually equal the textArea's value
-                    //var initials = " "
-                    //saveStorage({initials,score})
+                    var initials = " ";
+                    saveStorage({initials,score})
                 }
             }
         })
@@ -156,4 +161,5 @@ function loadStorage(){
 }
 
 loadStorage();
+saveStorage();
 
