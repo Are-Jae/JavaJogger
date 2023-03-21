@@ -1,42 +1,47 @@
-const info = document.querySelector(".info");
+// const info = document.querySelector(".info");needs an id 
 const startBtn = document.querySelector("#quizBtn");
 const saveBtn = document.querySelector("#saveBtn");
 
-const quiz = document.querySelector(".quiz");
-const question = document.querySelector(".question");
-const choices = document.querySelector(".choices");
-const scoreBox = document.querySelector(".score");
+//const quiz = document.querySelector(".quiz");needs an id 
+// const question = document.querySelector(".question");needs an id 
+// const choices = document.querySelector(".choices");needs an id 
+// const scoreBox = document.querySelector(".score");needs an id 
 const submitBtn = document.querySelector(".submit");
-const end = document.querySelector(".end");
-const finalScore= document.querySelector(".finalScore");
-const storedScore= document.querySelector(".storedScore"); 
+//const end = document.querySelector(".end");needs an id 
+// const finalScore= document.querySelector(".finalScore"); needs an id 
+// const storedScore= document.querySelector(".storedScore"); needs an id 
 let message= document.querySelector("#message")
 
 var index = 0; //this doesnt need to change
-let score = ''; 
+let score = ''; //what do I need to save this as? 0 or empty string? 
 let correctAnswer= "Correct";
 let wrongAnswer= "Wrong";
 
-let savedScores= ""; //what do I need to save this as? 
+let textBox = ("initials");// Need a function to just store initials after quiz is done;
+
+let savedScores= ""; //what do I need to save this as? 0 or empty string? 
 
 
 // how can I add a "finish quiz" button? to the quiz code, it will end quiz function 
-// Need a function to just store initials after quiz is done; How can I write a function to store the highscores/initials to display AFTER the last question is answered? it needs to be stored within an object, then a function needs to be made in order for the items in that object to be called like for var set using localstorage.setitem, change the display settings 
+//  How can I write a function to store the highscores/initials to display AFTER the last question is answered? it needs to be stored within an object, then a function needs to be made in order for the items in that object to be called like for var set using localstorage.setitem, change the display settings 
 
-startBtn.addEventListener("click", function () {
-    info.style.display = "none"
-    start(index)
-})
+// startBtn.addEventListener("click", function () {
+//     info.style.display = "none"
+//     start(index)
 
 
-saveBtn.addEventListener("click", function(){
-//get text from initials 
-/*call*/ saveStorage({
-    initials: "",
-    score: "",
-})
-loadStorage()
-});
+
+// saveBtn.addEventListener("click", function(){
+// //get text from initials 
+// /*call*/ saveStorage({
+//     initials: "",
+//     score: "",
+// })
+
+// });
+// loadStorage()
+// })
+
 
 var set = [ //add real questions once functionality is set
     {
@@ -145,8 +150,8 @@ function loadStorage(){
     var savedScores = JSON.parse(localStorage.getItem(" "))
     console.log(savedScores)
     if(!savedScores){
-        localStorage.setItem("", JSON.stringify([]))
-        return
+        //localStorage.setItem("", JSON.stringify([]))
+        return("Must save initials")
     }
     //rendering the storage
     //loop thorugh the array
@@ -161,5 +166,5 @@ function loadStorage(){
 }
 
 loadStorage();
-saveStorage();
+// saveStorage();
 
