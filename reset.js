@@ -1,26 +1,33 @@
-// const info = document.querySelector(".info");needs an id 
-const startBtn = document.querySelector("#quizBtn");
-const saveBtn = document.querySelector("#saveBtn");
-
-const quiz = document.querySelector("Startquiz");
-const question = document.querySelector("Startquest");
-const choices = document.querySelector("Choicestart");
-// const scoreBox = document.querySelector(".score");needs an id 
-const timer = ("#time");
-const submitBtn = document.querySelector(".submit");
-const end = document.querySelector("endQuiz");
-const finalScore= document.querySelector(".finalScore"); 
-const storedScore= document.querySelector(".storedScore");
-let message= document.querySelector("#message")
-
-let index = 0; 
-let score = ''; //what do I need to save this as? 0 or empty string? 
-let correctAnswer= "Correct";
-let wrongAnswer= "Wrong";
+const quiz = document.querySelector("Startquiz");//function for quiz 
+const startBtn = document.querySelector("#quizBtn"); //starts quiz after button is clicked, will be inside of Startquiz  
 
 
 
-let savedScores= ""; //what do I need to save this as? 0 or empty string? 
+let timer = ("#time");//to be added after Startquiz funcx 
+const question = document.querySelector("Startquest");//will start asking questions from array after "Start Quiz" is selected 
+const choices = document.querySelector("Choicestart");//will display choices for answers from array then save the user choice to localStorage 
+
+let message = document.querySelector("#Answermessage")//shows wrong/correct on DOM 
+let storedScore = document.querySelector(".storedScore"); //stores highscores to local storage 
+
+
+const end = document.querySelector("endQuiz"); //will be new funcx to end quiz & submit scores
+let submitBtn = document.createElement("button"); //createElement within endQuiz funcx 
+let btnMessage = "Submit"; //will append using submitBtn.textContent= btnMessage (or innerHTML?)
+
+
+
+let highscoresMessage = document.querySelector("#noScores")//will be in highscores html, will display if no prev HS saved 
+let previousScoresmessage = "There are no previously saved scores" //self explanatory 
+
+const index = 0; //index must always be 0 
+let score = ''; //set as empty string for data to pass through 
+let correctAnswer = "Correct";
+let wrongAnswer = "Wrong";
+
+
+
+let savedScores = "";  //set as empty string for data to pass through 
 
 
 //I need a funcx that stops the questions and saves user score to local storage after they select "finish quiz" 
@@ -30,8 +37,8 @@ let savedScores= ""; //what do I need to save this as? 0 or empty string?
 
 
 
-
-let set = [ 
+//arr for questions and answers 
+let set = [
     {
         question: "Which of these is not a logical operator?",
         choices: ["&&", "||", ":"],
@@ -48,24 +55,24 @@ let set = [
         correct: "10 Days",
     },
     {
-        question:"What was Javascript originally named?",
-        choices:["Latte", "Mocha", "Espresso"],
-        correct:"Mocha",
+        question: "What was Javascript originally named?",
+        choices: ["Latte", "Mocha", "Espresso"],
+        correct: "Mocha",
     },
     {
-        question:"Which is not a Javascript data type",
-        choices:["Object", "Boolean", "coffeeReader" ],
+        question: "Which is not a Javascript data type",
+        choices: ["Object", "Boolean", "coffeeReader"],
         correct: "coffeeReader",
     },
     {
-        question:"What does Javascript do to a document/webpage?",
-        choices:["Styles the page", "Adds interactive elements", "Gives user free coffee"],
+        question: "What does Javascript do to a document/webpage?",
+        choices: ["Styles the page", "Adds interactive elements", "Gives user free coffee"],
         correct: "Adds interactive elements",
     }
 ]
 
 function start(index) { //this function needs to be split up, is doing too many things 
- textBox.style.display = "none" //hides initials until end of quiz 
+    textBox.style.display = "none" //hides initials until end of quiz 
 
     question.innerHTML = "";
     choices.innerHTML = "";
@@ -84,49 +91,49 @@ function start(index) { //this function needs to be split up, is doing too many 
                 if (clicked.innerHTML == set[index].correct) {
                     score = score + 1
                     console.log("Correct");
-                    message.textContent= correctAnswer;//something in here should change to show correct/wrong on the DOM rinse & repeat 
+                    message.textContent = correctAnswer;//something in here should change to show correct/wrong on the DOM rinse & repeat 
                 } else {
                     score = score - 1
                     console.log("Wrong");
-                    message.textContent= wrongAnswer;
-                    if (clicked.innerHTML == set[index].correct){
+                    message.textContent = wrongAnswer;
+                    if (clicked.innerHTML == set[index].correct) {
                         score <= 0
                         //score = 0
                         console.log("Wrong");
-                        message.textContent=wrongAnswer;
+                        message.textContent = wrongAnswer;
 
                         index++
-                    } 
+                    }
                 }
-              
-            }
-            
 
-            if(index < set.length) {
+            }
+
+
+            if (index < set.length) {
                 index = [0]
-               start(index)
+                start(index)
             } else {
-               // call an end quiz button
-            
-            return;
+                // call an end quiz button
+
+                return;
             }
         })
     })
-    
+
 
 
 }
 
 
- 
-         
 
 
 
-//this function below is saving user info to console 
 
- function saveStorage(newValue){  
-   console.log("Saving to Storage", newValue)
+
+//this function below is saving user info to local storage 
+
+function saveStorage(newValue) {
+    console.log("Saving to Storage", newValue)
     let savedScores = JSON.parse(localStorage.getItem(" "))
     console.log("Current saved scores", savedScores)
     savedScores.push(newValue)
@@ -135,24 +142,25 @@ function start(index) { //this function needs to be split up, is doing too many 
 }
 
 // do not place user info in local scope, place in global scope 
-function loadStorage(){
+function loadStorage() {
     let savedScores = JSON.parse(localStorage.getItem("scores"))
     console.log("- ", savedScores)
-    if(!savedScores){
+    if (!savedScores) {
         localStorage.setItem("scores", JSON.stringify([]))
-        return("Must save initials")
+        return ("Must save initials")
     }
     //rendering the storage by looping thorugh the array
-    savedScores.forEach(function(element){
+    savedScores.forEach(function (element) {
         console.log(element)
-            let newElement = document.createElement("li")
-            newElement.textContent = element.initials + " : " + element.score
-            console.log(newElement)
-            storedScore.push(newElement)
+        let newElement = document.createElement("li")
+        newElement.textContent = element.initials + " : " + element.score
+        console.log(newElement)
+        storedScore.push(newElement)
     })
 
 }
 
 loadStorage();
+savedScores();
 
 
