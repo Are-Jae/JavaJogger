@@ -3,7 +3,7 @@ const startBtn = document.querySelector("#quizBtn"); //starts quiz after button 
 
 
 
-let timer = ("#time");//to be added after Startquiz funcx 
+let quiztimer = ("#time");//to be added after Startquiz funcx 
 const question = document.querySelector("Startquest");//will start asking questions from array after "Start Quiz" is selected 
 const choices = document.querySelector("Choicestart");//will display choices for answers from array then save the user choice to localStorage 
 
@@ -71,17 +71,57 @@ let set = [
     }
 ]
 
-function start(index) { //this function needs to be split up, is doing too many things 
-    textBox.style.display = "none" //hides initials until end of quiz 
 
-    question.innerHTML = "";
-    choices.innerHTML = "";
-    // loop through the set array
-    let currentQuestion = set[index].question
+
+
+
+
+
+let quizTimer= ""  //starts timer
+
+let timeLeft=  "" //var keeps track of seconds left in quiz 
+
+function Startquiz(){
+
+quizBtn.addEventListener("click", function(){
+
+
+    function startTimer(){
+
+        quizTimer = setInterval( function () {
+
+        
+        
+        if (timeLeft > 0) {
+        
+        
+        timeLeft--
+        
+        }
+        
+        
+    }, 1000); 
+        
+        }
+        
+        clearInterval(quizTimer); 
+    }
+
+)};
+
+
+
+
+    question.innerHTML = ""; //grabbing questions from arr 
+    choices.innerHTML = ""; //grabbing choices from arr 
+    // looping through the set array
+	
+    var currentQuestion = set[index].question 
     question.innerHTML = currentQuestion
-    let currentAnswer = set[index].choices
+    var currentAnswer = set[index].choices
+	
     currentAnswer.forEach(function (i) {
-        let button = document.createElement("button")
+        var button = document.createElement("button")
         button.innerHTML = i;
         choices.append(button)
         button.addEventListener("click", function (event) {
@@ -90,77 +130,51 @@ function start(index) { //this function needs to be split up, is doing too many 
             if (clicked.innerHTML) {
                 if (clicked.innerHTML == set[index].correct) {
                     score = score + 1
+					
                     console.log("Correct");
-                    message.textContent = correctAnswer;//something in here should change to show correct/wrong on the DOM rinse & repeat 
+                    message.textContent= correctAnswer;     //something in here should change to show correct/wrong on the DOM rinse & repeat; done  
                 } else {
                     score = score - 1
                     console.log("Wrong");
-                    message.textContent = wrongAnswer;
-                    if (clicked.innerHTML == set[index].correct) {
+                    message.textContent= wrongAnswer;
+                    if (clicked.innerHTML == set[index].correct){
                         score <= 0
-                        //score = 0
+                 
+				        
                         console.log("Wrong");
-                        message.textContent = wrongAnswer;
-
-                        index++
+                        message.textContent=wrongAnswer;
                     }
                 }
-
-            }
-
-
-            if (index < set.length) {
-                index = [0]
-                start(index)
-            } else {
-                // call an end quiz button
-
-                return;
+                index++
+                if(index < set.length) {
+                     //index = [0]
+                    start(index)
+                } else { 
+				
+				event.stopPropagation(); 
+                    
+                localStorage.setItem("scores");
+                }
             }
         })
     })
+   
 
+
+
+
+
+
+
+localScores = {
+
+initials: '', 
+
+scores: '',
 
 
 }
 
+//object to store initials and scores, empty strings to pass data through 
 
-
-
-
-
-
-//this function below is saving user info to local storage 
-
-function saveStorage(newValue) {
-    console.log("Saving to Storage", newValue)
-    let savedScores = JSON.parse(localStorage.getItem(" "))
-    console.log("Current saved scores", savedScores)
-    savedScores.push(newValue)
-    console.log("updated savedScores", savedScores)
-    localStorage.setItem("scores", JSON.stringify(savedScores))
-}
-
-// do not place user info in local scope, place in global scope 
-function loadStorage() {
-    let savedScores = JSON.parse(localStorage.getItem("scores"))
-    console.log("- ", savedScores)
-    if (!savedScores) {
-        localStorage.setItem("scores", JSON.stringify([]))
-        return ("Must save initials")
-    }
-    //rendering the storage by looping thorugh the array
-    savedScores.forEach(function (element) {
-        console.log(element)
-        let newElement = document.createElement("li")
-        newElement.textContent = element.initials + " : " + element.score
-        console.log(newElement)
-        storedScore.push(newElement)
-    })
-
-}
-
-loadStorage();
-savedScores();
-
-
+// storedScore.push will add info from localstorage into Highscores list 
