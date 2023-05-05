@@ -9,31 +9,30 @@
   </head>
   <body>
     <header>
-    <section class="info" id="infoTitle">
-      <h1 class="quizTitle">JAVA JOGGER JAVASCRIPT KNOWLEDGE TESTER QUIZERMABOB</h1>
-      <h2><a href="highscores.html">Highscores</a></h2>
-      <h2>Directions:</h2>
-      <p>To begin quiz click "Start Quiz" then start quiz!</p>
-      <div class="timer" id="time"></div> <!--needs to only show when quiz has started-->
-      
-    </section>
-</header>
+      <section class="info" id="infoTitle">
+        <h1 class="quizTitle">JAVA JOGGER JAVASCRIPT KNOWLEDGE TESTER QUIZERMABOB</h1>
+        <h2><a href="highscores.html">Highscores</a></h2>
+        <h2>Directions:</h2>
+        <p>To begin quiz click "Start Quiz" then start quiz!</p>
+        <div class="timer" id="time"></div> <!--needs to only show when quiz has started-->
+      </section>
+    </header>
 
-
-<div><button class="startBtn" id="quizBtn">Start Quiz</button></div>
+    <div><button class="startBtn" id="quizBtn">Start Quiz</button></div>
 
     <section class="quiz" id="Startquiz">
       <h1 class="question" id="Startquest"></h1>
       <ul class="choices" id="Choicestart"></ul>
       <div id="Answermessage"></div>
-
     </section>
 
     <section class="end" id="endQuiz"> <!-- whole section needs to display after last question is answered-->
-       
-      
-
-        <!--<div id="storedScore"></div>needs to display all previous HS-->
+      <div id="storedScore"></div>
+      <div id="noScores"></div>
+      <div id="submitBtnContainer">
+        <button class="submitBtn"></button>
+        <!-- //add text  -->
+      </div>
     </section>
 
     <script src="reset.js"></script>
