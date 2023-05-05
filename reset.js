@@ -1,17 +1,18 @@
-const quiz = document.querySelector("Startquiz");//function for quiz 
+const quiz = document.querySelector("#Startquiz");//function for quiz 
 const startBtn = document.querySelector("#quizBtn"); //starts quiz after button is clicked, will be inside of Startquiz  
 
 
 
-let quiztimer = ("#time");//to be added after Startquiz funcx 
-const question = document.querySelector("Startquest");//will start asking questions from array after "Start Quiz" is selected 
-const choices = document.querySelector("Choicestart");//will display choices for answers from array then save the user choice to localStorage 
+const quiztimer = document.querySelector("#time");//to be added after Startquiz funcx 
+const question = document.querySelector("#Startquest");//will start asking questions from array after "Start Quiz" is selected 
+const choices = document.querySelector("#Choicestart");//will display choices for answers from array then save the user choice to localStorage 
 
 let message = document.querySelector("#Answermessage")//shows wrong/correct on DOM 
-let storedScore = document.querySelector(".storedScore"); //stores highscores to local storage 
+const storedScores = localStorage.getItem("storedScores"); //stores highscores to local storage 
+const localScores = storedScores ? JSON.parse(storedScores) : [];
 
 
-const end = document.querySelector("endQuiz"); //will be new funcx to end quiz & submit scores
+const end = document.querySelector("#endQuiz"); //will be new funcx to end quiz & submit scores
 let submitBtn = document.createElement("button"); //createElement within endQuiz funcx 
 let btnMessage = "Submit"; //will append using submitBtn.textContent= btnMessage (or innerHTML?)
 
