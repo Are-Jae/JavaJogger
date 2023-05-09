@@ -17,8 +17,10 @@ WHEN the game is over
 THEN I can save my initials and score
 
 
-
+## Desired Outcome 
 The goal of this project is to create an app that quizzes the user on Javascript elements. 
+
+## TIMELINE 
 
 My first task is to figure out what palette to use for this project so that I can apply CSS. My second task is to start mapping out the HTML portion of this project in order to add Javascript to that framework. 
 
@@ -30,6 +32,8 @@ I started with building the html and placing the titles, questions, and answers 
 
 I went into CSS to position the text elements on the webpage and apply colors to the text and background.
 
+
+## UI Design 
 The colors chosen for the app are: (this has changed)
 
 Text: Black
@@ -42,7 +46,7 @@ Reset Text:
 
 I decided to leave the buttons as their default color. 
 
-
+## CHALLENGES 
 Once I am able to apply the CSS to my HTML file then I can start applying Javascript in order to add a responsive element to my static html document.
 
 I struggled with what to name my sections and containers to make sure I was making my code as reader friendly and efficient as possible. Once I was able to determine the best naming practices for those elements I focused on styling the text. I added color and positioning to text before I finished with the javascript in order to get a better idea of where my app would be located on the webpage. 
@@ -54,8 +58,11 @@ I was able to add a multiple choice option to my webpage, now I need to figure o
 My last task is to successfully have this app open on a local server successfully 
 
 
-##
-SOURCES 
+## SOURCES 
+
+
+## TOOLS 
+
 
 
 ## TO DO:

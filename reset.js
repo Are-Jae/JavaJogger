@@ -56,7 +56,7 @@ let set = [
 ]
 
 let quizTimer = null;
-let timeLeft = 60;
+let timeLeft = 30;
 
 function startTimer() {
     quizTimer = setInterval(function() {
@@ -69,7 +69,10 @@ function startTimer() {
             endQuiz();
         }
     }, 1000);
-}
+};
+
+
+
 function startQuiz() {
     startTimer();
     question.innerHTML = "";
@@ -89,7 +92,7 @@ function startQuiz() {
                 score = score + 1
                 
                 console.log("Correct");
-                message.textContent= correctAnswer;     //something in here should change to show correct/wrong on the DOM rinse & repeat; done  
+                message.textContent= correctAnswer;      
             } else {
                 score = score - 1
                 console.log("Wrong");

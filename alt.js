@@ -49,7 +49,7 @@ var set = [ //add real questions once functionality is set
     },
     {
         question:"What does Javascript do to a document/webpage?",
-        choices:["Stlyes the page", "Adds interactive elements", "Gives user free coffee"],
+        choices:["Styles the page", "Adds interactive elements", "Gives user free coffee"],
         correct: "Adds interactive elements",
     }
 ]

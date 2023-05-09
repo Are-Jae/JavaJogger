@@ -1,4 +1,4 @@
-:root{
+:root{ 
 
     --quizDisplay: flex;
     --quizText:    center;
@@ -52,7 +52,7 @@
 }
 
 
-.p{ /*mostly font change, no color added, will align w/ info */
+.sumitBtn{ /*mostly font change, no color added, will align w/ info */
 
 
 
@@ -82,25 +82,20 @@
 
 }
 
-.end{
-
-
-
-}
-
-.score{ /*will display after last question is answered*/
+.end{/*will style score status & score submit button*/
 
 
 }
 
-
-.textarea{ /*align box to left, float */
+.displayScore{/*will style current user score*/
 
 
 }
 
 
-.submit{ /*will share same elements as startBtn, consolodate style rules*/
+
+
+.submit{ /*will style submitBtn*/
 
 
 
@@ -109,7 +104,7 @@
 
 
 
-.storedScore{ /*will display all previous highscores*/
+.storedScores{ /*will style all previous highscores as OL w/ LI*/
 
 
 }
