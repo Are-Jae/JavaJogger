@@ -5,16 +5,19 @@ const question = document.querySelector("#Startquest");
 const quizContainer = document.querySelector("#Startquiz");
 let message = document.querySelector("#Answermessage");
 const option1 = document.getElementById("option-1");
-const option2= document.getElementById("option-2");
+const option2 = document.getElementById("option-2");
 const option3 = document.getElementById("option-3");
-option1.addEventListener("click",checkanswer)
-option2.addEventListener("click",checkanswer)
-option3.addEventListener("click",checkanswer)
+option1.addEventListener("click", checkanswer)
+option2.addEventListener("click", checkanswer)
+option3.addEventListener("click", checkanswer)
 quizContainer.style.display = "none"
 const storedScores = localStorage.getItem("storedScores");
 const localScores = storedScores ? JSON.parse(storedScores) : [];
 
 const end = document.querySelector("#endQuiz");
+end.style.display = "none";
+const displayEnd = document.querySelector("#endScore");
+displayEnd.style.display = "none"
 // let submitBtn = document.createElement("button");
 // let btnMessage = "Submit";
 // submitBtn.textContent = btnMessage;
@@ -66,7 +69,7 @@ let quizTimer = null;
 let timeLeft = 30;
 
 function startTimer() {
-    quizTimer = setInterval(function() {
+    quizTimer = setInterval(function () {
         if (timeLeft > 0) {
             timeLeft--;
             quiztimer.textContent = timeLeft;
@@ -86,7 +89,7 @@ function startQuiz() {
     startTimer();
     renderQuestion()
 }
-function renderQuestion(){
+function renderQuestion() {
 
     question.innerText = set[index].question;
     option1.textContent = set[index].choices[0];
@@ -94,28 +97,28 @@ function renderQuestion(){
     option3.textContent = set[index].choices[2];
 }
 
-function checkanswer(event){
-   var userSelection =  event.target.textContent
-   if(userSelection === set[index].correct){
-    score +=1
-    message.textContent = correctAnswer
+function checkanswer(event) {
+    var userSelection = event.target.textContent
+    if (userSelection === set[index].correct) {
+        score += 1
+        message.textContent = correctAnswer
 
-   }else {
-     timeLeft -= 5 // timeLeft = timeLeft -5
-     message.textContent = wrongAnswer 
-   } 
-   if(index < set.length-1) {
-       index++;
-        
-      renderQuestion()
-   } else { 
-   
-       clearInterval(quizTimer);
-       quizTimer = null;
-       endQuiz();
-       
-   
-   }
+    } else {
+        timeLeft -= 5 // timeLeft = timeLeft -5
+        message.textContent = wrongAnswer
+    }
+    if (index < set.length - 1) {
+        index++;
+
+        renderQuestion()
+    } else {
+
+        clearInterval(quizTimer);
+        quizTimer = null;
+        endQuiz();
+
+
+    }
 
 }
 /*
@@ -148,14 +151,22 @@ function checkanswer(event){
                     message.textContent=wrongAnswer;
                 }
             }
-      */      
-            function endQuiz() {
-                quizContainer.style.display = "none"
-                localStorage.setItem("storedScores", JSON.stringify(storedScores)); 
-              }   
-    
-   
-  startBtn.addEventListener("click", startQuiz);
+      */
+function endQuiz() {
+    quizContainer.style.display = "none";
+    end.style.display = "block"
+    document.getElementById("storedScores").innerText = "Your final Score is : " + (timeLeft + score)
+}
 
+
+startBtn.addEventListener("click", startQuiz);
+document.querySelector(".submitBtn").addEventListener('click', function () {
+    var userName = document.getElementById("userInitials").value
+    var scoreHistory = JSON.parse(localStorage.getItem("scoreboard")) || []
+    scoreHistory.push({user:userName, score: timeLeft+score})
+    localStorage.setItem("scoreboard", JSON.stringify(scoreHistory));
+    displayEnd.style.display = "block";
+    end.style.display = "none"
+})
   //after answer made quiz does not move to next queston, why?
   //is submit button working?
