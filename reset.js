@@ -2,20 +2,27 @@ const startBtn = document.querySelector("#quizBtn");
 
 const quiztimer = document.querySelector("#time");
 const question = document.querySelector("#Startquest");
-const choices = document.querySelector("#Choicestart");
-let message = document.querySelector("#Answermessage")
+const quizContainer = document.querySelector("#Startquiz");
+let message = document.querySelector("#Answermessage");
+const option1 = document.getElementById("option-1");
+const option2= document.getElementById("option-2");
+const option3 = document.getElementById("option-3");
+option1.addEventListener("click",checkanswer)
+option2.addEventListener("click",checkanswer)
+option3.addEventListener("click",checkanswer)
+quizContainer.style.display = "none"
 const storedScores = localStorage.getItem("storedScores");
 const localScores = storedScores ? JSON.parse(storedScores) : [];
 
 const end = document.querySelector("#endQuiz");
-let submitBtn = document.createElement("button");
-let btnMessage = "Submit";
-submitBtn.textContent = btnMessage;
+// let submitBtn = document.createElement("button");
+// let btnMessage = "Submit";
+// submitBtn.textContent = btnMessage;
 
 let highscoresMessage = document.querySelector("#noScores")
 let previousScoresmessage = "There are no previously saved scores"
 
-const index = 0;
+let index = 0;
 let score = 0;
 let correctAnswer = "Correct";
 let wrongAnswer = "Wrong";
@@ -74,8 +81,44 @@ function startTimer() {
 
 
 function startQuiz() {
+    quizContainer.style.display = "block"
+    startBtn.style.display = "none"
     startTimer();
-    question.innerHTML = "";
+    renderQuestion()
+}
+function renderQuestion(){
+
+    question.innerText = set[index].question;
+    option1.textContent = set[index].choices[0];
+    option2.textContent = set[index].choices[1];
+    option3.textContent = set[index].choices[2];
+}
+
+function checkanswer(event){
+   var userSelection =  event.target.textContent
+   if(userSelection === set[index].correct){
+    score +=1
+    message.textContent = correctAnswer
+
+   }else {
+     timeLeft -= 5 // timeLeft = timeLeft -5
+     message.textContent = wrongAnswer 
+   } 
+   if(index < set.length-1) {
+       index++;
+        
+      renderQuestion()
+   } else { 
+   
+       clearInterval(quizTimer);
+       quizTimer = null;
+       endQuiz();
+       
+   
+   }
+
+}
+/*
     choices.innerHTML = "";
     var currentQuestion = set[index].question;
     question.innerHTML = currentQuestion;
@@ -105,26 +148,13 @@ function startQuiz() {
                     message.textContent=wrongAnswer;
                 }
             }
-            index++;
-            if(index < set.length) {
-                 //index = [0]
-                start(index)
-            } else { 
-            
-                clearInterval(quizTimer);
-                quizTimer = null;
-                endQuiz();
-                
-            
-            }
+      */      
             function endQuiz() {
+                quizContainer.style.display = "none"
                 localStorage.setItem("storedScores", JSON.stringify(storedScores)); 
-              }   }
+              }   
     
-    });
-});
-
-} 
+   
   startBtn.addEventListener("click", startQuiz);
 
   //after answer made quiz does not move to next queston, why?
