@@ -24,6 +24,7 @@ displayEnd.style.display = "none"
 
 let highscoresMessage = document.querySelector("#noScores")
 let previousScoresmessage = "There are no previously saved scores"
+let infoTitle = document.querySelector("#infoTitle")
 
 let index = 0;
 let score = 0;
@@ -84,8 +85,9 @@ function startTimer() {
 
 
 function startQuiz() {
-    quizContainer.style.display = "block"
-    startBtn.style.display = "none"
+    quizContainer.style.display = "block";
+    startBtn.style.display = "none";
+    infoTitle.style.display= "none";
     startTimer();
     renderQuestion()
 }
