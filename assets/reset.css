@@ -39,8 +39,14 @@
         
     }
 
- .startBtn{ /*will add bg color to button, should center with info*/
 
+
+
+ .startBtn{ /*will add bg color to button, should center with info*/
+    flex-direction: row;
+    background: black;
+    color: white; 
+   justify-content: center;
    
 }
 
@@ -52,9 +58,10 @@
 }
 
 
-.sumitBtn{ /*mostly font change, no color added, will align w/ info */
+.submitBtn{ /*mostly font change, no color added, will align w/ info */
 
-
+background: white;
+color: black;
 
 
 }
@@ -63,6 +70,7 @@
 
 
 .quiz{ /*will style everything within quiz, use items to style children*/
+    text-align: center;
     
    
 
@@ -78,7 +86,18 @@
 
 
 .choices{/*add boxes, bg- color, center text*/
+    list-style-type: none;
 
+
+}
+button{
+    background: purple;
+}
+
+li{
+    margin: 8px; 
+    
+    color:white; 
 
 }
 
