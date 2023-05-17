@@ -43,29 +43,37 @@
 .Highscores{
     text-align: left;
 
+
 }
 
  .startBtn{ /*will add bg color to button, should center with info*/
     flex-direction: row;
     background: black;
     color: white; 
-   justify-content: center;
+   
    
 }
 
 
 
-.timer{ /*will add display properties with js?*/
+.timer{ 
+    text-align: right; 
+    padding: 2rem;
+    background: #9d37d2;
+    font-weight: bold;
+    font-size: large;
 
-/*move to right side in nav*/
+
 
 }
 
 
 .submitBtn{ /*mostly font change, no color added, will align w/ info */
-
+    
 background: white;
 color: black;
+text-align: center; 
+
 
 
 }
@@ -85,10 +93,12 @@ color: black;
 
 .question{ /*add boxes, bg- color, center text, adjust box sizes*/ 
     position: relative;
-    background-color: #ffc;
+    /* background-color: #ffc; */
     padding: 2rem;
     text-align: center;
-    max-width: 200px;
+    
+    font-size:  50px;
+    background-color: #c14fea;
 
 
 
@@ -100,8 +110,21 @@ color: black;
 
 
 }
+
+.Answertype{
+    text-align: center;
+    font-weight: bolder;
+    position: relative;
+
+
+}
+
+
+
 button{
     background: purple;
+    position: relative;
+    align-self: center;
 }
 
 li{
@@ -113,27 +136,29 @@ li{
 
 .end{/*will style score status & score submit button*/
 
+    text-align: center;
 
 }
 
 .displayScore{/*will style current user score*/
+    position: relative;
+    /* background-color: #ffc;
+    padding: 2rem; */
+    text-align: center;
 
-
-}
-
-
-
-
-.submit{ /*will style submitBtn*/
 
 
 
 }
+
 
 
 
 
 .storedScores{ /*will style all previous highscores as OL w/ LI*/
-
+    position: relative;
+    /* background-color: #ffc; */
+    padding: 2rem;
+    text-align: center;
 
 }

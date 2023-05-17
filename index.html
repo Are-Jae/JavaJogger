@@ -13,16 +13,18 @@
       <nav>
       <section class="info" id="infoTitle">
         <h1 class="quizTitle">JAVA JOGGER JAVASCRIPT KNOWLEDGE TESTER QUIZERMABOB</h1>
-        <h2 class="Highscores"><a href="highscores.html">Highscores</a></h2>
+        <h2 class="Highscores"><a href="highscores.html">View Highscores</a></h2>
         <h2>Directions:</h2><br><br>
         <p>To begin quiz click "Start Quiz" then start quiz!</p>
       </section>
-        <div class="timer" id="time"></div> <!--needs to only show when quiz has started-->
+    </nav>
+  </header>
+       
       
-    </header>
-  </nav>
+    
+  
     <div><button class="startBtn" id="quizBtn">Start Quiz</button></div>
-
+    <div class="timer" id="time"></div> <!--needs to only show when quiz has started-->
     <section class="quiz" id="Startquiz">
       <h1 class="question" id="Startquest"></h1>
       <ul class="choices" id="Choicestart">
@@ -30,7 +32,7 @@
         <li><button id="option-2"></button></li>
         <li><button id="option-3"></button></li>
       </ul>
-      <div id="Answermessage"></div>
+      <div id="Answermessage" class="Answertype"></div>
     </section>
 
     <section class="end" id="endQuiz"> <!-- whole section needs to display after last question is answered-->

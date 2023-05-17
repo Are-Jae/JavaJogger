@@ -68,6 +68,7 @@ let set = [
 
 let quizTimer = null;
 let timeLeft = 30;
+var Timerstyle= time.style.display = "hide"
 
 function startTimer() {
     quizTimer = setInterval(function () {
@@ -84,10 +85,13 @@ function startTimer() {
 
 
 
+
+
 function startQuiz() {
     quizContainer.style.display = "block";
     startBtn.style.display = "none";
     infoTitle.style.display= "none";
+    
     startTimer();
     renderQuestion()
 }
@@ -170,5 +174,4 @@ document.querySelector(".submitBtn").addEventListener('click', function () {
     displayEnd.style.display = "block";
     end.style.display = "none"
 })
-  //after answer made quiz does not move to next queston, why?
-  //is submit button working?
+ 

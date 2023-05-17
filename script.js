@@ -2,20 +2,31 @@ const startBtn = document.querySelector("#quizBtn");
 
 const quiztimer = document.querySelector("#time");
 const question = document.querySelector("#Startquest");
-const choices = document.querySelector("#Choicestart");
-let message = document.querySelector("#Answermessage")
+const quizContainer = document.querySelector("#Startquiz");
+let message = document.querySelector("#Answermessage");
+const option1 = document.getElementById("option-1");
+const option2 = document.getElementById("option-2");
+const option3 = document.getElementById("option-3");
+option1.addEventListener("click", checkanswer)
+option2.addEventListener("click", checkanswer)
+option3.addEventListener("click", checkanswer)
+quizContainer.style.display = "none"
 const storedScores = localStorage.getItem("storedScores");
 const localScores = storedScores ? JSON.parse(storedScores) : [];
 
 const end = document.querySelector("#endQuiz");
-let submitBtn = document.createElement("button");
-let btnMessage = "Submit";
-submitBtn.textContent = btnMessage;
+end.style.display = "none";
+const displayEnd = document.querySelector("#endScore");
+displayEnd.style.display = "none"
+// let submitBtn = document.createElement("button");
+// let btnMessage = "Submit";
+// submitBtn.textContent = btnMessage;
 
 let highscoresMessage = document.querySelector("#noScores")
 let previousScoresmessage = "There are no previously saved scores"
+let infoTitle = document.querySelector("#infoTitle")
 
-const index = 0;
+let index = 0;
 let score = 0;
 let correctAnswer = "Correct";
 let wrongAnswer = "Wrong";
@@ -57,10 +68,9 @@ let set = [
 
 let quizTimer = null;
 let timeLeft = 30;
-let endScore= //data from local storage of current user's scores? 
 
 function startTimer() {
-    quizTimer = setInterval(function() {
+    quizTimer = setInterval(function () {
         if (timeLeft > 0) {
             timeLeft--;
             quiztimer.textContent = timeLeft;
@@ -75,57 +85,58 @@ function startTimer() {
 
 
 function startQuiz() {
+    quizContainer.style.display = "block";
+    startBtn.style.display = "none";
+    infoTitle.style.display= "none";
     startTimer();
-    question.innerHTML = "";
-    choices.innerHTML = "";
-    var currentQuestion = set[index].question;
-    question.innerHTML = currentQuestion;
-    var currentAnswer = set[index].choices;
-    currentAnswer.forEach(function start(i) {
-      var button = document.createElement("button");
-      button.innerHTML = i;
-      choices.append(button);
-      button.addEventListener("click", function(event) {
-        event.preventDefault();
-        let clicked = event.target;
-        if (clicked.innerHTML) {
-            if (clicked.innerHTML == set[index].correct) {
-                score = score + 1
-                
-                console.log("Correct");
-                message.textContent= correctAnswer;      
-            } else {
-                score = score - 1
-                console.log("Wrong");
-                message.textContent= wrongAnswer;
-                if (clicked.innerHTML == set[index].correct){
-                    score <= 0
-             
-                    
-                    console.log("Wrong");
-                    message.textContent=wrongAnswer;
-                }
-            }
-            index++;
-            if(index < set.length) {
-                 //index = [0]
-                start(index)
-            } else { 
-            
-                clearInterval(quizTimer);
-                quizTimer = null;
-                endQuiz();
-                
-            
-            }
-            function endQuiz() {
-                localStorage.setItem("storedScores", JSON.stringify(storedScores)); 
-              }   }
-    
-    });
-});
+    renderQuestion()
+}
+function renderQuestion() {
 
-} 
-  startBtn.addEventListener("click", startQuiz);
+    question.innerText = set[index].question;
+    option1.textContent = set[index].choices[0];
+    option2.textContent = set[index].choices[1];
+    option3.textContent = set[index].choices[2];
+}
 
-  //incomplete, still working from js 
+function checkanswer(event) {
+    var userSelection = event.target.textContent
+    if (userSelection === set[index].correct) {
+        score += 1
+        message.textContent = correctAnswer
+
+    } else {
+        timeLeft -= 5 // timeLeft = timeLeft -5
+        message.textContent = wrongAnswer
+    }
+    if (index < set.length - 1) {
+        index++;
+
+        renderQuestion()
+    } else {
+
+        clearInterval(quizTimer);
+        quizTimer = null;
+        endQuiz();
+
+
+    }
+
+}
+
+function endQuiz() {
+    quizContainer.style.display = "none";
+    end.style.display = "block"
+    document.getElementById("storedScores").innerText = "Your final Score is : " + (timeLeft + score)
+}
+
+
+startBtn.addEventListener("click", startQuiz);
+document.querySelector(".submitBtn").addEventListener('click', function () {
+    var userName = document.getElementById("userInitials").value
+    var scoreHistory = JSON.parse(localStorage.getItem("scoreboard")) || []
+    scoreHistory.push({user:userName, score: timeLeft+score})
+    localStorage.setItem("scoreboard", JSON.stringify(scoreHistory));
+    displayEnd.style.display = "block";
+    end.style.display = "none"
+})
