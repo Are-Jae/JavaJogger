@@ -68,6 +68,7 @@ let set = [
 
 let quizTimer = null;
 let timeLeft = 30;
+var Timerstyle= time.style.display = "hide"
 
 function startTimer() {
     quizTimer = setInterval(function () {
@@ -84,10 +85,13 @@ function startTimer() {
 
 
 
+
+
 function startQuiz() {
     quizContainer.style.display = "block";
     startBtn.style.display = "none";
     infoTitle.style.display= "none";
+    
     startTimer();
     renderQuestion()
 }
@@ -123,7 +127,37 @@ function checkanswer(event) {
     }
 
 }
-
+/*
+    choices.innerHTML = "";
+    var currentQuestion = set[index].question;
+    question.innerHTML = currentQuestion;
+    var currentAnswer = set[index].choices;
+    currentAnswer.forEach(function start(i) {
+      var button = document.createElement("button");
+      button.innerHTML = i;
+      choices.append(button);
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
+        let clicked = event.target;
+        if (clicked.innerHTML) {
+            if (clicked.innerHTML == set[index].correct) {
+                score = score + 1
+                
+                console.log("Correct");
+                message.textContent= correctAnswer;      
+            } else {
+                score = score - 1
+                console.log("Wrong");
+                message.textContent= wrongAnswer;
+                if (clicked.innerHTML == set[index].correct){
+                    score <= 0
+             
+                    
+                    console.log("Wrong");
+                    message.textContent=wrongAnswer;
+                }
+            }
+      */
 function endQuiz() {
     quizContainer.style.display = "none";
     end.style.display = "block"
@@ -140,3 +174,4 @@ document.querySelector(".submitBtn").addEventListener('click', function () {
     displayEnd.style.display = "block";
     end.style.display = "none"
 })
+ 

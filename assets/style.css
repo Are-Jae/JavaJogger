@@ -1,0 +1,164 @@
+:root{ 
+
+    --quizDisplay: flex;
+    --quizText:    center;
+    --quizPosition: relative;
+    }
+    
+.body{
+    background-color: #FAF9F6;
+}
+
+
+.info{ /*will be used to center info elements but not style them*/
+        flex-flow: row wrap;
+        position: relative;
+        text-align: center;
+        margin-top: 20px;
+
+
+
+}
+
+
+.quizTitle{ /*will apply to all h1*/
+
+    /*display: var(--quizDisplay);
+    position: var(--quizPosition);
+    align-self: (var(--quizText));*/
+    
+        
+        font-size: large;
+        flex-flow: row wrap;
+        position: relative;
+        text-align: center;
+        background-color: none;
+        
+    
+    
+        
+    }
+
+
+.Highscores{
+    text-align: left;
+
+
+}
+
+ .startBtn{ /*will add bg color to button, should center with info*/
+    flex-direction: row;
+    background: black;
+    color: white; 
+   
+   
+}
+
+
+
+.timer{ 
+    text-align: right; 
+    padding: 2rem;
+    background: #9d37d2;
+    font-weight: bold;
+    font-size: large;
+
+
+
+}
+
+
+.submitBtn{ /*mostly font change, no color added, will align w/ info */
+    
+background: white;
+color: black;
+text-align: center; 
+
+
+
+}
+
+
+
+
+.quiz{ /*will style everything within quiz, use items to style children*/
+    text-align: center;
+    
+   
+
+
+}
+
+
+
+.question{ /*add boxes, bg- color, center text, adjust box sizes*/ 
+    position: relative;
+    /* background-color: #ffc; */
+    padding: 2rem;
+    text-align: center;
+    
+    font-size:  50px;
+    background-color: #c14fea;
+
+
+
+}
+
+
+.choices{/*add boxes, bg- color, center text*/
+    list-style-type: none;
+
+
+}
+
+.Answertype{
+    text-align: center;
+    font-weight: bolder;
+    position: relative;
+
+
+}
+
+
+
+button{
+    background: purple;
+    position: relative;
+    align-self: center;
+}
+
+li{
+    margin: 8px; 
+    
+    color:white; 
+
+}
+
+.end{/*will style score status & score submit button*/
+
+    text-align: center;
+
+}
+
+.displayScore{/*will style current user score*/
+    position: relative;
+    /* background-color: #ffc;
+    padding: 2rem; */
+    text-align: center;
+
+
+
+
+}
+
+
+
+
+
+.storedScores{ /*will style all previous highscores as OL w/ LI*/
+    position: relative;
+    /* background-color: #ffc; */
+    padding: 2rem;
+    text-align: center;
+
+}
